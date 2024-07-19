@@ -276,7 +276,7 @@ def write_bbs(request: Request,name: str = "",message: str = "",seed:Union[str,N
     if not(check_cokie(yuki)):
         return redirect("/")
     base = "{url}bbs/result?name={urllib.parse.quote(name)}&message={urllib.parse.quote(message)}&seed={urllib.parse.quote(seed)}&channel={urllib.parse.quote(channel)}&verify={urllib.parse.quote(verify)}&info={urllib.parse.quote(get_info(request))}&serververify={get_verifycode()}"
-    print(base)
+    print(fr"{base}")
     t = requests.get(fr"base",cookies={"yuki":"True"}, allow_redirects=False)
     if t.status_code != 307:
         return HTMLResponse(t.text)
